@@ -12,9 +12,11 @@ class LineChart extends React.Component {
 
       
     };
+    
   
 
-  componentDidMount = () => {
+  componentDidMount = (ssf_data = false) => {
+
     let chart = am4core.create(this.props.chart_id, am4charts.XYChart);
 
     chart.paddingRight = 20;
@@ -49,6 +51,51 @@ class LineChart extends React.Component {
       "stroke":"0"}
       
       ]
+
+      if(ssf_data && ssf_data === "MT"){
+        chart.data = [
+          {"date":"2020-01-10","visits":1,"market1": 21,"stroke":"0",
+          "market2": 75,
+          "sales1": 5,
+          "sales2": 8},
+          {"date":"2020-02-20","visits":24,"market1": 54,"stroke":"0",
+          "market2": 78,
+          "sales1": 4,
+          "sales2": 6},
+          {"date":"2020-03-12","visits":13, "market1": 78,"stroke":"0",
+          "market2": 88,
+          "sales1": 5,
+          "sales2": 2},
+          {"date":"2020-04-15","visits":19,"market1": 155,"stroke":"10",
+          "market2": 89,
+          "sales1": 8,
+          "sales2": 9},
+          {"date":"2020-05-19","visits":10, "market1": 122,"stroke":"0",
+          "market2": 89,
+          "sales1": 9,
+          "sales2": 6}
+          ]
+      } else if (ssf_data && ssf_data === "MICRO"){
+        chart.data = [
+          {"date":"2020-01-10","visits":15,"market1": 201,"stroke":"0",
+          "market2": 75,
+          "sales1": 5,
+          "sales2": 8},
+          {"date":"2020-02-20","visits":14,"market1": 154,"stroke":"0",
+          "market2": 78,
+          "sales1": 4,
+          "sales2": 6},
+          {"date":"2020-03-12","visits":63, "market1": 78,"stroke":"0",
+          "market2": 88,
+          "sales1": 5,
+          "sales2": 2},
+          {"date":"2020-04-15","visits":19,"market1": 65,"stroke":"10",
+          "market2": 89,
+          "sales1": 8,
+          "sales2": 9}
+          ]
+      }
+  
 
 
     let dateAxis = chart.xAxes.push(new am4charts.DateAxis());

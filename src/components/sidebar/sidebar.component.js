@@ -33,14 +33,30 @@ class Sidebar extends React.Component {
                     {/* sidebar menu */}
                     <ul className="nav sidebar-inner" id="sidebar-menu">
                       <li className={this.state.path === "/" ? "active active-border-sidebar" : "brbt"}>
-                        <Link to="/" className="sidenav-item-link">
-                          <img src ="assets/img/ic_data summary-active@3x.png" className="sidebar-icons"></img>
+                        <Link to="/" className="sidenav-item-link"  style={this.state.path === "/" ? {} : { color:'#5D60A0' }}>
+                        {
+                            this.state.path === "/" ? 
+                            (
+                              <img src ="assets/img/ic_data summary-active@3x.png" className="sidebar-icons"></img>
+                            ):(
+                              <img src ="assets/img/ic_data summary-active@3x-inactive.png" className="sidebar-icons"></img>
+                            )
+                          }
                           <span className="nav-text"> Data summary</span>
                         </Link>
                       </li>
                       <li className={this.state.path === "/info" ? "active active-border-sidebar" : "brbt"}>
-                        <Link to="/info" className="sidenav-item-link" style={{ color:'#5D60A0' }}>
-                        <img src ="assets/img/ic_operator info@3x.png" className="sidebar-icons"></img>
+                        <Link to="/info" className="sidenav-item-link" style={this.state.path === "/info" ? {} : { color:'#5D60A0' }}>
+                          {
+                            this.state.path === "/info" ? 
+                            (
+                              <img src ="assets/img/ic_operator info@3x-active.png" className="sidebar-icons"></img>
+                              
+                            ):(
+                              <img src ="assets/img/ic_operator info@3x.png" className="sidebar-icons"></img>
+                            )
+                          }
+                          
                           <span className="nav-text">Operator info</span>
                         </Link>
                       </li>

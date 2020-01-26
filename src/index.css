@@ -225,7 +225,7 @@ color: #616161;
 }
 
 ul#inline-list li {
-	display:inline;
+	display:inline !important;
   }
 
 
@@ -310,3 +310,112 @@ ul#inline-list li {
 .icon3{
 	margin-top: 10px;
 }
+
+
+
+.w3-row-padding:after,
+.w3-row-padding:before,
+.w3-bar:after {
+	content: "";
+	display: table;
+	clear: both
+}
+
+.w3-row-padding,
+.w3-row-padding>.w3-half,
+.w3-row-padding>.w3-third,
+.w3-row-padding>.w3-col {
+	padding: 0 8px
+}
+
+
+@media (min-width: 600px) {
+	.w3-third {
+		width: 100%
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.w3-third {
+		width: 100%;
+	}
+}
+
+@media only screen and (min-width: 992px) {
+	.w3-third{
+		float: left;
+		width: 33.3333%
+	}
+}
+
+
+.w3-fourth{
+	width: 50%
+}
+.w3-row-padding,
+.w3-row-padding>.w3-half,
+.w3-row-padding>.w3-third,
+.w3-row-padding>.w3-col {
+	padding: 0 8px
+}
+
+.cards-desktop-show {
+	display: none;
+}
+
+
+
+@media (min-width: 600px) {
+	.cards-desktop-show {
+		display: none;
+	}
+	
+	.cards-mobile-show {
+		display: block;
+	}
+}
+
+
+@media only screen and (min-width: 992px) {
+	.cards-desktop-show {
+		display: block;
+	}
+	
+	.cards-mobile-show {
+		display: none;
+	}
+}
+
+.active-ssf-button{
+	background:#fff;
+	padding:20px 50px;
+	border-bottom: 2px solid #fff;
+}
+
+.ssf-button {
+	background:#fff;
+	padding:20px 50px;
+	border:1px solid #D7E8FF;
+	box-shadow: inset 0 1px 5px 0 #E2EEFF;
+}
+
+.ssf-button-last {
+	border-top-right-radius: 3px;
+}
+
+.blr5{
+	border-top-left-radius: 5px;
+}
+.min-max-color {
+	color: #6C6C6C;
+	font-size: 12px;
+}
+
+.yellow-color {
+	color: #EED102;
+}
+
+.cyan-color {
+	color: #76D9F4;
+}
+

@@ -1,17 +1,22 @@
 import React from "react";
 import LineChart from "../components/line-chart/line-chart.components";
-import BarChart from "../components/bar-chart/bar-chart.component";
 import Sidebar from "../components/sidebar/sidebar.component";
 import Header from "../components/header/header.component";
 import Datepicker from "../UI/datepicker";
 import {Link} from "react-router-dom";
+import CandleChart from "../components/candle-chart/candle-chart.component";
 
 class Info extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            navbar:true
+            navbar:true,
+            activepill: "SSF"
         }
+        this.linechart = React.createRef()
+        this.linechart2 = React.createRef()
+        this.barchart = React.createRef()
+        this.thresholdchart = React.createRef()
     }
 
     handleSidebar = () => {
@@ -19,6 +24,18 @@ class Info extends React.Component {
             navbar: !this.state.navbar
         })
     }
+
+    handleSsfButtons = (ssf_type) => {
+      this.setState({
+        activepill: ssf_type
+      })
+
+      this.linechart.current.componentDidMount(ssf_type)
+      this.linechart2.current.componentDidMount(ssf_type)
+      this.barchart.current.componentDidMount(ssf_type)
+      this.thresholdchart.current.componentDidMount(ssf_type)
+    }
+
 
     render(){
         return (
@@ -44,8 +61,38 @@ class Info extends React.Component {
                     <br/>
                     <br/>
                     <br/>
-                    <div className="row">
-                      <div className="col-xl-12 col-sm-6">
+
+                    <div className="cards-mobile-show">
+                      <br/>  <br/>  <br/>  <br/>
+                      <div className="card card-default">
+                      <div className="card-header">    
+                        <div className="w3-row-padding">
+                          <div className="w3-third"><img src ="assets/img/ic_training sessions@3x.png" className="dashboard-content-icons"></img></div>
+                          <div className="w3-third"><h2 className="f17">Total no of training sessio</h2></div>
+                          <div className="w3-third"><p className="bold black-color">03</p></div>
+                        </div>
+                        </div>
+                    </div>
+                    <div className="card card-default">
+                      <div className="card-header">    
+                        <div className="w3-row-padding ">
+                          <div className="w3-third"><img src ="assets/img/ic_training sessions@3x.png" className="dashboard-content-icons"></img></div>
+                          <div className="w3-third"><h2 className="f17">Total no of training sessio</h2></div>
+                          <div className="w3-third"><p className="bold black-color">03</p></div>
+                        </div>
+                        </div>
+                    </div>
+                    <div className="card card-default">
+                      <div className="card-header">    
+                        <div className="w3-row-padding ">
+                        <center><button type="button" className="print-btn"><Link to="/certificate" style={{ color:'#fff' }}>Print Certificate</Link></button></center>
+                        </div>
+                        </div>
+                    </div>
+                  </div>
+              
+
+                    <div className="w3-row-padding cards-desktop-show">
                         <div className="card card-default">
                           <div className="card-header">
                             <div className="row">
@@ -73,10 +120,8 @@ class Info extends React.Component {
                             </div>
                           </div>
                         </div>
-                      </div>
-          
-                      
                     </div>
+
                     <div className="row">
                         <div className="col-xl-6 col-sm-6">
                             <div className="card br10">
@@ -107,18 +152,19 @@ class Info extends React.Component {
                     <br/>
                     <div className="row">
                         <div className="col-xl-12 col-sm-12">
-                            <div className="card card-default" style={{ borderTopLeftRadius:'0px', border:'none' }}>
-                            <div style={{ background:'#F6F6FB' }}>
-                                <button style={{ background:'#fff',padding:'20px 50px' }}>SSF</button>
-                                <button style={{ background:'#fff',padding:'20px 50px', border:'1px solid #D7E8FF',boxShadow: '0 1px 5px 0 #E2EEFF' }}>MT</button>
-                                <button style={{ background:'#fff',padding:'20px 50px', border:'1px solid #D7E8FF',boxShadow: '0 1px 5px 0 #E2EEFF', borderRadius:'0px 6px 0px 0px' }}>MICRO</button>
+                        <div className="card card-default" style={{ border:'none' }}>
+                            <div style={{ background:'#F6F6FB' }} >
+                                <button className={this.state.activepill === "SSF" ? "active-ssf-button blr5" : "ssf-button" } onClick={() => this.handleSsfButtons("SSF")}>SSF</button>
+                                <button className={this.state.activepill === "MT" ? "active-ssf-button blr5" : "ssf-button" } onClick={() => this.handleSsfButtons("MT") }>MT</button>
+                                <button className={this.state.activepill === "MICRO" ? "active-ssf-button blr5 ssf-button-last" : "ssf-button ssf-button-last" } onClick={() => this.handleSsfButtons("MICRO")}>MICRO</button>
                             </div>
+
 
                                 <div className="card-body">
                                     
                                 <div className="row">
                                     <div className="col-xl-5 col-sm-12">
-                                        <div className="card card-default" style={{ height:'279px' }}>
+                                        <div className="card card-default" style={{ height:'353px' }}>
                                             <div className="card-body">
                                               <div className="row mbpb10" style={{ borderBottom:'0.5px solid #f2f2f2' }}>
                                               <div className="col-xl-2 col-sm-12">
@@ -157,8 +203,20 @@ class Info extends React.Component {
                                                 </div>
                                                 <div className="col-xl-7 col-sm-12">
                                                   <div> 
-                                                    <div style={{ background:'lightgrey', height:'30px', width:"100%", borderRadius:'5px' }}>
-                                                      <div style={{ background:'#5655B4', width:'70%',height:'30px', marginLeft:"20px" }}></div>
+                                                    <div style={{ display:'flex' }}>
+                                                      <p className="yellow-color f12" style={{ marginLeft:'19%' }}>37</p>
+                                                      <p className="cyan-color f12" style={{ marginLeft:'15%' }}>40</p>
+                                                    </div>
+                                                    <div style={{ background:'lightgrey', height:'30px', width:"100%", borderRadius:'5px', display:'flex' }}>
+                                                     
+                                                      <div style={{ background:'#5655B4', width:'15%',height:'30px', marginLeft:"20px", borderRight:'1px solid #F2D822' }}></div>
+                                                      <div style={{ background:'#5655B4', width:'20%',height:'30px', borderRight:'1px solid #76D9F4' }}></div>
+                                                      <div style={{ background:'#5655B4', width:'35%',height:'30px' }}></div>
+                                                
+                                                    </div>
+                                                    <div>
+                                                      <p className="fl min-max-color">MIN</p>
+                                                      <p className="fr min-max-color">MAX</p>
                                                     </div>
                                                   </div>
                                                 </div>
@@ -169,14 +227,30 @@ class Info extends React.Component {
                                                 <img src ="assets/img/ic_training sessions@3x.png" className="dashboard-content-icons"></img>Training
                                                 </div>
                                                 <div className="col-xl-7 col-sm-12">
+                                                <div style={{ display:'flex' }}>
+                                                      <p className="yellow-color f12" style={{ marginLeft:'34%' }}>40</p>
+                                                      <p className="cyan-color f12" style={{ marginLeft:'15%' }}>45</p>
+                                                    </div>
                                                 <div> 
-                                                    <div style={{ background:'lightgrey', height:'30px', width:"100%", borderRadius:'5px' }}>
-                                                      <div style={{ background:'#FF7171', width:'70%',height:'30px', marginLeft:"20px" }}></div>
+                                                    <div style={{ background:'lightgrey', height:'30px', width:"100%", borderRadius:'5px', display:'flex' }}>
+                                                    <div style={{ background:'#FF7171', width:'30%',height:'30px', marginLeft:"20px", borderRight:'1px solid #76D9F4' }}></div>
+                                                      <div style={{ background:'#FF7171', width:'20%',height:'30px', borderRight:'1px solid #F2D822' }}></div>
+                                                      <div style={{ background:'#FF7171', width:'25%',height:'30px' }}></div>
+                                                
+                                                    </div>
+                                                    <div>
+                                                      <p className="fl min-max-color">MIN</p>
+                                                      <p className="fr min-max-color">MAX</p>
                                                     </div>
                                                   </div>
                                                 </div>
                                          
                                                 </div>
+
+                                                <ul id="inline-list" className="fr">
+                                                  <li><button className="legend-buttons legend-buttons-yellow" type="button"></button> &nbsp;Avg, time &nbsp;</li>
+                                                  <li><button className="legend-buttons legend-buttons-cyan" type="button"></button> &nbsp; Threshold</li>
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
@@ -189,7 +263,7 @@ class Info extends React.Component {
                                         <p className="bold f13">PLOT OF NUMBER OF TRAINING SESSIONS VS DAY</p>
                                         </div>
                                         <div className="card-body">
-                                        <LineChart chart_id={"training_session_vs_day2"} trend_line={"yes"} color={"#FF7171"} />
+                                        <LineChart ref={this.linechart} chart_id={"training_session_vs_day2"} trend_line={"yes"} color={"#FF7171"} />
                                         <ul id="inline-list" className="fr">
                                           <li><button className="legend-buttons legend-buttons-green" type="button"></button> &nbsp;Session no &nbsp;</li>
                                           <li><button className="legend-buttons legend-buttons-red" type="button"></button> &nbsp; Training</li>
@@ -205,7 +279,7 @@ class Info extends React.Component {
                                         <p className="bold f13">PLOT OF NUMBER OF CERTIFICATE SESSIONS VS DAY</p>
                                         </div>
                                         <div className="card-body">
-                                        <LineChart chart_id={"certificate_session_vs_day2"} trend_line={"yes"} color={"#2F53FF"} />
+                                        <LineChart ref={this.linechart2} chart_id={"certificate_session_vs_day2"} trend_line={"yes"} color={"#2F53FF"} />
                                         <ul id="inline-list" className="fr">
                                           <li><button className="legend-buttons legend-buttons-green" type="button"></button> &nbsp;Session no &nbsp;</li>
                                           <li><button className="legend-buttons legend-buttons-blue" type="button"></button> &nbsp; Certification</li>
@@ -226,12 +300,11 @@ class Info extends React.Component {
                                         <p className="f12" style={{ color:'#000' }}>Avg. time, Min. time & max. time with threshold</p>
                                         </div>
                                         <div className="card-body">
-                                        <BarChart chart_id={"drill_doen-timing"} />
+                                        <CandleChart ref={this.barchart} chart_id={"drill_doen-timing"} />
                                         <ul id="inline-list" className="fr">
                                           <li><button className="legend-buttons legend-buttons-yellow" type="button"></button> &nbsp;Avg. time &nbsp;</li>
                                           <li><button className="legend-buttons legend-buttons-cyan" type="button"></button> &nbsp; Threshold</li>
                                         </ul>
-                                        {/* <DivergentChart chart_id={"drill_doen-timing"}> */}
                                         </div>
                                             
                                         </div>
@@ -247,7 +320,7 @@ class Info extends React.Component {
                                         <p className="f12" style={{ color:'#000' }}>Click and edit the dots on-hover</p>
                                         </div>
                                         <div className="card-body">
-                                          <LineChart chart_id={"threshold_chart"} trend_line={"yes"} color={"#2F53FF"} threshold={"yes"}/>
+                                          <LineChart ref={this.thresholdchart} chart_id={"threshold_chart"} trend_line={"yes"} color={"#2F53FF"} threshold={"yes"}/>
                                           <ul id="inline-list" className="fr">
                                             <li><button className="legend-buttons legend-buttons-green" type="button"></button> &nbsp;session no &nbsp;</li>
                                             <li><button className="legend-buttons legend-buttons-blue" type="button"></button> &nbsp; Hits/Drops</li>
