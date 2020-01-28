@@ -375,6 +375,16 @@ ul#inline-list li {
 	}
 }
 
+@media only screen and (min-width: 900px) {
+	.cards-desktop-show {
+		display: none;
+	}
+	
+	.cards-mobile-show {
+		display: block;
+	}
+}
+
 
 @media only screen and (min-width: 992px) {
 	.cards-desktop-show {
@@ -419,3 +429,20 @@ ul#inline-list li {
 	color: #76D9F4;
 }
 
+
+
+.sidebar-close-toggle{
+	display: block;
+}
+
+
+@media only screen and (min-width: 992px) {
+	.sidebar-close-toggle{
+		display: none;
+	}
+	
+}
+
+.main-font {
+	font-family: Proxima Nova !important;
+}

@@ -3,12 +3,10 @@ import React from "react";
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
-import { CodeGenerator } from "@babel/generator";
-import { AmChartsLogo } from "@amcharts/amcharts4/.internal/core/elements/AmChartsLogo";
 
 am4core.useTheme(am4themes_animated);
 
-class Test extends React.Component {
+class CandleChart extends React.Component {
   constructor(props) {
     super(props);
 
@@ -226,7 +224,7 @@ class Test extends React.Component {
   }
 }
 
-export default Test;
+export default CandleChart;
 
 
 

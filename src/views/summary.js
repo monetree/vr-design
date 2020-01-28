@@ -44,7 +44,7 @@ class Summary extends React.Component {
                 )
             }
             <div className="wrapper">
-            <Sidebar/>
+            <Sidebar handleSidebar={this.handleSidebar}/>
 
               <div className="page-wrapper">
               <Header handleSidebar={this.handleSidebar}/>

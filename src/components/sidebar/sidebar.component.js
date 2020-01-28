@@ -10,12 +10,13 @@ class Sidebar extends React.Component {
         }
     }
 
+  
     handleSidebar = () => {
-        this.setState({
-            navbar: !this.state.navbar
-        })
-    }
+      this.props.handleSidebar()
+  }
 
+
+  
     render(){
         return (
 
@@ -27,6 +28,7 @@ class Sidebar extends React.Component {
                       <img src="assets/img/logo.png" alt="Mono" />
                       <span className="brand-name"></span>
                     </Link>
+                    <i onClick={this.handleSidebar} class="fa fa-times f16 sidebar-close-toggle" style={{ color:'#fff', position:'fixed', top:'0.7cm', left:'6cm' }} aria-hidden="true"></i>
                   </div>
                   {/* begin sidebar scrollbar */}
                   <div className="sidebar-left" data-simplebar style={{height: '100%'}}>

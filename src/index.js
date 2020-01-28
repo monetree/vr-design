@@ -12,7 +12,7 @@ ReactDOM.render(
       <Router history={hist}>
       <Suspense fallback={
       <div className='loaderimageContainer'>
-        <img className="loaderimage" style={{ width:'100%', height:'700px' }} src="https://i.pinimg.com/originals/78/e8/26/78e826ca1b9351214dfdd5e47f7e2024.gif" alt="loader">
+        <img className="loaderimage" style={{ width:'100%', height:'700px' }} src="assets/img/loader.gif" alt="loader">
         </img>
       </div>}> 
           <Switch>

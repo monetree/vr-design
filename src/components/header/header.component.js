@@ -34,7 +34,7 @@ class Header extends React.Component {
 
                   <li className={this.state.manageprofiletoggle ? "dropdown user-menu" : "dropdown user-menu show" }>
                     <button className="dropdown-toggle nav-link" data-toggle="dropdown" onClick={this.manageProfileToggle}>
-                      <img src="assets/img/user/user-xs-01.jpg" className="user-image rounded-circle" alt="User Image" />
+                      <img src="assets/img/user/user-md-01.jpg" className="user-image rounded-circle" alt="User Image" />
                       <span style={{ color:'#5655B4' }}>William D.</span>
                  
                     </button>

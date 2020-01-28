@@ -132,6 +132,7 @@ class LineChart extends React.Component {
       bullet4.circle.propertyFields.radius = "stroke"
       bullet4.stroke = am4core.color("#fff");
       bullet4.circle.fill = am4core.color("#FF7171");
+      bullet4.draggable = true;
     }
 
     

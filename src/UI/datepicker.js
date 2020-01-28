@@ -7,6 +7,15 @@ class Datepicker extends React.Component {
     startDate: new Date(),
     endDate: new Date()
   };
+
+
+  componentDidMount(){
+    let node1 = document.getElementsByClassName("c1")
+    let node2 = document.getElementsByClassName("c2")
+    node1[0].classList.add("main-font")
+    node2[0].classList.add("main-font")
+
+  }
   onChangeStartDate = date => this.setState({ startDate: date });
   onChangeEndDate = date => this.setState({ endDate: date });
   toggle = () => {
